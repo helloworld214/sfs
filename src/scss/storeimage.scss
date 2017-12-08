@@ -1,0 +1,79 @@
+/*======================================================
+                    storeimage
+======================================================*/
+.storeimage{
+	.main{
+		background: url("../images/storeimage_bg.png") left top / 100% repeat-y;
+	}
+	.main > .container{
+		@extend %content-container;
+	}
+	.grid{
+		padding: 80px 0;
+		.picbox{
+			@extend %picbox;
+			img{
+				@include transition(all $duration);
+			}
+			@include hover{
+				img{
+					@include transform(scale(1.15));
+				}
+			}
+		}
+		.grid-sizer,
+		.grid-item{
+			width: 50%;
+		}
+		.grid-item{
+			float: left;
+			box-sizing: border-box;
+			margin-bottom: 115px;
+			&.left{
+				padding-right: 80px;
+			}
+			&.right{
+				padding-left: 60px;
+				.picbox{
+					margin-top: 25%;
+				}
+			}
+			&.large{
+				width: 100%;
+				.picbox{
+					width: 86%;
+					margin: 0 auto;
+				}
+			}
+		}
+
+	}
+
+	@include maxScreenWidth(767){
+		.grid{
+			.grid-sizer,
+			.grid-item{
+				width: 100%;
+			}
+			.grid-item{
+				float: none;
+				margin-bottom: 30px;
+				&.left{
+					padding-right: 0;
+				}
+				&.right{
+					padding-left: 0;
+					.picbox{
+						margin-top: 0;
+					}
+				}
+				&.large{
+					.picbox{
+						width: 100%;
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}

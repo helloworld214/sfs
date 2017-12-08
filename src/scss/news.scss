@@ -1,0 +1,217 @@
+/*======================================================
+                    news
+======================================================*/
+
+.news{
+	.main > .container{
+		width: 80%;
+		margin: 0 auto;
+	}
+	.grid{
+		margin: 80px 0;
+		.grid-sizer{
+			width: 50%;
+		}
+		.grid-item{
+			position: relative;
+			float: left;
+			width: 50%;
+		}
+		.picbox{
+			@extend %picbox;
+			position: relative;
+			width: 50%;
+			img{
+				@include transition(all .35s);
+			}
+		}
+		.mask{
+			@extend %patl0;
+			@extend %full;
+			background-color: rgba(#000, 0);
+			@include transition(all .8s);
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			z-index: 1;
+			width: 50%;
+			height: 100%;
+			background-color: #fbfbfb;
+			@include transition(all $duration);
+		}
+		.text{
+			position: relative;
+			box-sizing: border-box;
+			padding: 0 45px;
+			text-align: left;
+			h3{
+				font-size: 20px;
+			}
+			p{
+				max-height: 60px;
+				margin: 30px 0;
+				font-size: 12px;
+				line-height: 30px;
+				color: #888;
+				overflow: hidden;
+				@include transition(all $duration);
+			}
+			.learn-more{
+				display: inline-block;
+				padding-bottom: 1px;
+				font-style: italic;
+				font-size: 12px;
+				border-bottom: 1px solid #000;
+			}
+		}
+		.time{
+			position: absolute;
+			top: 0;
+			width: 64px;
+			padding: 10px 0;
+			color: #000;
+			background-color: #fbfbfb;
+			font-size: 16px;
+			@include transition(all $duration);
+			.day{
+				//font-family: $didot;
+				//font-weight: bold;
+				font-size: 18px;
+			}
+		}
+		.time-wap{
+			display: none;
+			margin: 15px 0;
+			font-size: 12px;
+			color: #999;
+		}
+		.grid-item{
+			&.tl{
+				.grid-link{
+					.picbox{
+						margin-left: 50%;
+					}
+					.textbox{
+						left: 0;
+					}
+					.time{
+						left: 100%;
+					}
+				}
+			}
+			&.tr{
+				.grid-link{
+					.picbox{
+						margin: 0;
+					}
+					.textbox{
+						right: 0;
+					}
+					.time{
+						left: -64px;
+					}
+				}
+			}
+			&:nth-child(1){
+				.picbox{
+					width: 100%;
+					margin: 0;
+				}
+				.textbox{
+					left: auto;
+					right: 0;
+					height: 50%;
+				}
+				.time{
+					left: -64px;
+				}
+			}
+
+		}
+		.grid-item{
+			@include hover{
+				.picbox img{
+					@include transform(scale(1.12));
+				}
+				.time,
+				.textbox{
+					background-color: #eee;
+				}
+				.text p{
+					color: #000;
+				}
+				.mask{
+					background-color: rgba(#000, .3);
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(1280){
+		.grid{
+			.grid-item{
+				width: 100%;
+				&:nth-child(1){
+					.picbox{
+						width: 50%;
+						margin: 0 auto;
+					}
+					.textbox{
+						right: auto;
+						left: auto;
+						height: 100%;
+					}
+					.time{
+						left: -64px;
+					}
+				}
+			}
+		}
+	}
+	@include maxScreenWidth(991){
+		.main > .container{
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	@include maxScreenWidth(767){
+		.grid{
+			.grid-item{
+				margin-bottom: 30px;
+				&.tl, &.tr{
+					.grid-link{
+						border-radius: 4px;
+						box-shadow: 3px 3px 15px rgba(#000, .15);
+						overflow: hidden;
+						.picbox{
+							position: static;
+							width: 100%;
+							margin: 0;
+						}
+						.textbox{
+							position: static;
+							box-sizing: border-box;
+							width: 100%;
+							margin: 0;
+							padding: 30px 15px;
+						}
+						.text{
+							padding: 0;
+
+							p{
+								margin: 20px 0;
+							}
+						}
+						.time{
+							display: none;
+						}
+						.time-wap{
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}

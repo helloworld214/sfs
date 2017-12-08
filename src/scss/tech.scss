@@ -1,0 +1,191 @@
+/*======================================================
+                    tech
+======================================================*/
+.tech{
+	@extend .com-custom;
+	.intro > .container{
+		width: 80%;
+		margin: 0 auto;
+		@include maxScreenWidth(991){
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	.intro{
+		margin-bottom: 150px;
+		.picbox{
+			@extend %picbox;
+			width: 47%;
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			width: 53%;
+			height: 100%;
+		}
+		.text{
+			width: 65%;
+			margin: 0 auto;
+			text-align: left;
+		}
+		.atitle{
+			margin-bottom: 10%;
+			font-size: 20px;
+			.cn{
+				color: #000;
+			}
+			.en{
+				font-family: $didot;
+				font-style: italic;
+				color: #bbb;
+			}
+		}
+		.title{
+			.en{
+				font-family: $didot;
+				font-style: italic;
+				font-size: 32px;
+			}
+			.cn{
+				font-size: 14px;
+				color: #333;
+			}
+		}
+		.line {
+			width: 28px;
+			height: 1px;
+			margin: 10px 0 30px;
+			background-color: #000;
+		}
+		.subtitle{
+			margin-bottom: 20px;
+			font-size: 14px;
+			color: #000;
+		}
+		.summary{
+			font-size: 14px;
+			line-height: 26px;
+			color: #777;
+		}
+		li{
+			position: relative;
+			margin-top: -6%;
+			@include transition(all $duration);
+			&:first-child{
+				margin-top: 0;
+				.text{
+					padding-bottom: 15%;
+				}
+			}
+		}
+		li:nth-child(odd){
+			.picbox{
+				margin-left: 0;
+			}
+			.textbox{
+				left: 47%;
+			}
+		}
+		li:nth-child(even){
+			.picbox{
+				margin-left: 53%;
+			}
+			.textbox{
+				left: 0;
+			}
+		}
+	}
+	@include maxScreenWidth(1480){
+		.intro{
+			li{
+				margin-top: -3%;
+			}
+		}
+	}
+	@include maxScreenWidth(1280){
+		.intro{
+			.atitle{
+				margin-bottom: 8%;
+				font-size: 18px;
+			}
+			.title{
+				.en{
+					font-size: 22px;
+				}
+			}
+			.text{
+				width: 75%;
+			}
+			li{
+				margin-top: 0;
+			}
+		}
+	}
+	@include maxScreenWidth(1100){
+		.intro{
+			li{
+				margin-bottom: 60px;
+				&:first-child{
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	@include maxScreenWidth(991){
+		.intro{
+			.text{
+				box-sizing: border-box;
+				width: 100%;
+				padding: 0 15px;
+			}
+			.title{
+				.en{
+					font-size: 18px;
+				}
+				.cn{
+					font-size: 14px;
+				}
+			}
+			.line{
+				margin: 10px 0;
+			}
+		}
+	}
+	@include maxScreenWidth(991){
+		.intro{
+			.picbox, .textbox{
+				position: static;
+				width: 100%;
+				margin: 0;
+			}
+			li{
+				margin-bottom: 50px;
+				border-radius: 4px;
+				box-shadow: 3px 3px 15px rgba(#000, .15);
+				overflow: hidden;
+			}
+			li:nth-child(odd),
+			li:nth-child(even){
+				.picbox{
+					margin: 0;
+				}
+				.textbox{
+					left: 0;
+				}
+			}
+			.textbox{
+				box-sizing: border-box;
+				padding: 30px 15px;
+			}
+			.text{
+				padding: 0;
+			}
+			.line{
+				margin: 10px 0 20px;
+			}
+			.summary{
+				text-align: justify;
+			}
+		}
+	}
+}

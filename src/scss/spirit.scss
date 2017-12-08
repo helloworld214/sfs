@@ -1,0 +1,117 @@
+/*======================================================
+                    spirit
+======================================================*/
+.spirit{
+	@extend .com-custom;
+	.spiritshow{
+		.container{
+			width: 80%;
+			margin: 0 auto;
+			@include maxScreenWidth(991){
+				width: auto;
+				margin: 0 12px;
+			}
+		}
+		.picbox{
+			@extend %picbox;
+			position: relative;
+		}
+		.textbox{
+			position: absolute;
+			box-sizing: border-box;
+		}
+		.text{
+			text-align: left;
+		}
+		.title{
+			.en{
+				font-family: $didotBold;
+				font-style: italic;
+				//font-weight: bold;
+				font-size: 32px;
+				color: #000;
+			}
+			.cn{
+				font-size: 14px;
+				color: #333;
+			}
+		}
+		.subtitle{
+			margin: 35px 0 25px;
+			font-size: 16px;
+			color: #000;
+		}
+		.summary{
+			line-height: 26px;
+			color: #777;
+		}
+		.part{
+			position: relative;
+			margin-bottom: 190px;
+		}
+		.part1{
+			.picbox{
+				width: 65%;
+			}
+			.textbox{
+				top: 28%;
+				right: 0;
+				padding: 8% 5% 8% 6%;
+				background-color: #f9f9f9;
+			}
+
+			.line{
+				width: 28px;
+				height: 1px;
+				background-color: #000;
+			}
+			.summary{
+				max-width: 530px;
+				max-height: 104px;
+				overflow: hidden;
+			}
+		}
+		.part2{
+			.picbox{
+				width: 55%;
+				margin-left: 45%;
+			}
+			.textbox{
+				top: 0;
+				left: 0;
+				width: 45%;
+				height: 100%;
+			}
+			.subtitle{
+				margin-top: 0;
+			}
+			.summary{
+				max-width: 80%;
+			}
+		}
+	}
+	@include maxScreenWidth(991){
+		.spiritshow{
+			.part{
+				margin-bottom: 50px;
+				border-radius: 4px;
+				box-shadow: 3px 3px 15px rgba(#000, .15);
+				overflow: hidden;
+				.picbox,
+				.textbox{
+					position: static;
+					width: 100%;
+					margin: 0;
+				}
+				.textbox{
+					box-sizing: border-box;
+					padding: 30px 15px;
+				}
+				.summary{
+					max-width: 100%;
+					text-align: justify;
+				}
+			}
+		}
+	}
+}

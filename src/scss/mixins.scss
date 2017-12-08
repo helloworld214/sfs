@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+// 添加浏览器前缀
+@mixin prefix($attr, $value, $prefixs: webkit moz ms o){
+	@each $item in $prefixs{
+		-#{$item}-#{$attr}: $value;
+	}
+	#{$attr}: $value;
+}
+
+// transform变换
+@mixin transform($value){
+	@include prefix(transform, $value);
+}
+
+
+// transition过渡
+@mixin transition($value...){
+	@include prefix(transition, $value);
+}
+
+// animation动画
+@mixin animation($value: none){
+	@include prefix(animation, $value);
+}
+
+// 图片去色
+@mixin grayscale($value: 0){
+	@include prefix(filter, grayscale($value), webkit moz o);
+}
+
+// 关键帧动画
+@mixin keyframes($name){
+	@-khtml-keyframes #{$name} {
+		@content;
+	}
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+
+
+// 媒体查询最大宽度( width <= $width )
+@mixin maxScreenWidth($width){
+	@media screen and (max-width: $width + px) {
+		@content;
+	}
+}
+
+// 媒体查询最小宽度( width >= $width )
+@mixin minScreenWidth($width){
+	@media screen and (min-width: $width + px) {
+		@content;
+	}
+}
+
+// 媒体查询最宽度处于大最小值之间（ $min <= width <= $max ）
+@mixin betweenScreenWidth($min, $max){
+	@media screen and (min-width: $min + px) and (max-width: $max + px) {
+		@content;
+	}
+}
+
+// 媒体查询大屏幕（ width >= 1200px ）
+@mixin lgScreen{
+	@media screen and (min-width: 1200px){
+		@content;
+	}
+}
+
+// 媒体查询中等屏幕，平板（ 992px <= width <= 1199px ）
+@mixin mdScreen{
+	@media screen and (min-width: 992px) and (max-width: 1199px) {
+		@content;
+	}
+}
+
+// 媒体查询小屏幕（ 768px <= width <= 991px ）
+@mixin smScreen{
+	@media screen and (min-width: 768px) and (max-width: 991px) {
+		@content;
+	}
+}
+
+// 媒体查询超小屏幕（ 767px <= width ）
+@mixin xsScreen{
+	@media screen and (max-width: 767px) {
+		@content;
+	}
+}
+
+// 媒体查询PC端（ width >= 992px ）
+@mixin pc{
+	@media screen and (min-width: 992px) {
+		@content;
+	}
+}
+
+// 媒体查询移动端（ width <= 991px ）
+@mixin mobile{
+	@media screen and (max-width: 991px) {
+		@content;
+	}
+}
+
+
+
+// hover
+@mixin hover{
+	@include pc{
+		&:hover{
+			@content;
+		}
+	}
+}
+
+// hover or active
+@mixin hoverOrActive{
+	&.active{
+		@content;
+	}
+	@include hover{
+		@content;
+	}
+}

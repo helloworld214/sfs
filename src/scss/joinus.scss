@@ -1,0 +1,235 @@
+/*======================================================
+                    joinus
+======================================================*/
+.joinus{
+	.main > .container{
+		@extend %content-container;
+		overflow: hidden;
+	}
+	.btn-join{
+		display: block;
+		width: 150px;
+		height: 34px;
+		text-align: center;
+		line-height: 34px;
+		color: #999;
+		background-color: #000;
+		@include transition(all .3s);
+		@include hover{
+			color: #fff;
+		}
+	}
+	.banner{
+		position: relative;
+		margin: 85px 0;
+		.picbox{
+			@extend %picbox;
+		}
+		.btn-join{
+			position: absolute;
+			bottom: 35px;
+			left: 50%;
+			margin-left: -75px;
+		}
+	}
+	.jobs{
+		position: relative;
+		width: 85%;
+		margin: 0 auto 150px;
+		ul{
+			@extend %clearfix;
+			margin: 0 -35px;
+		}
+		li{
+			position: relative;
+			float: left;
+			box-sizing: border-box;
+			width: calc(100% / 3);
+			margin-bottom: 70px;
+			padding: 0 35px;
+			cursor: pointer;
+			.text{
+				box-sizing: border-box;
+				width: 100%;
+				padding: 50px 0;
+				border: 1px solid rgba(#000, .3);
+				text-align: center;
+				@include transition(all .35s);
+				h3{
+					@extend %ellipsis;
+					width: 65%;
+					margin: 0 auto 20px;
+					padding: 15px 0;
+					font-size: 16px;
+					border-bottom: 1px dashed rgba(#000, .2);
+				}
+				p{
+					font-size: 12px;
+					color: #666;
+					line-height: 26px;
+				}
+				.learn-more{
+					display: inline-block;
+					margin-top: 30px;
+					font-style: italic;
+					font-size: 12px;
+					border-bottom: 1px solid #000;
+				}
+				@include hover{
+					border-color: #fff;
+					@include transform(translate3d(0, -2px, 0));
+					box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+				}
+			}
+		}
+
+		.jobintro{
+			position: relative;
+			display: none;
+			width: 100%;
+			height: auto;
+			color: #666;
+			background-color: #fff;
+			.info{
+				position: relative;
+				padding: 50px 0;
+				opacity: 0;
+				@include transition(opacity .8s);
+			}
+			.title{
+				font-size: 24px;
+				text-align: center;
+				color: #000;
+			}
+			.time{
+				padding: 15px 0 30px;
+				font-size: 12px;
+				color: #999;
+				text-align: center;
+			}
+			.text{
+				padding: 30px 0;
+				border-top: 1px solid #efefef;
+			}
+			.links{
+				padding: 30px 0;
+				border-top: 1px solid #efefef;
+				color: #000;
+				.link{
+					margin: 10px 0;
+				}
+				a{
+					display: inline-block;
+					border-bottom: 1px solid #fff;
+					color: #808080;
+					@include transition(all .3s);
+					@include hover{
+						border-color: #808080;
+					}
+				}
+			}
+			.btn-close{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 36px;
+				height: 36px;
+				cursor: pointer;
+				@include transition(all .35s);
+				&:before, &:after{
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 6px;
+					width: 24px;
+					height: 1px;
+					background-color: #000;
+				}
+				&:before{
+					@include transform(rotate(45deg));
+				}
+				&:after{
+					@include transform(rotate(-45deg));
+				}
+				@include hover{
+					@include transform(rotate(180deg));
+				}
+			}
+			.btn-apply{
+				margin-bottom: 30px;
+			}
+		}
+	}
+	.jobs.open{
+		.joblist{
+			display: none;
+		}
+		.jobintro{
+			display: block;
+			.info{
+				opacity: 1;
+			}
+		}
+	}
+	@include maxScreenWidth(1200){
+		.jobs{
+			li{
+				width: 50%;
+				margin-bottom: 70px;
+			}
+		}
+	}
+	@include maxScreenWidth(991){
+		.banner{
+			.picbox{
+				height: 320px;
+			}
+			.picbox img{
+				position: relative;
+				left: 50%;
+				width: auto;
+				height: 100%;
+				-webkit-transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+				transform: translateX(-50%);
+			}
+		}
+		.btn-join{
+			color: #fff;
+		}
+		.jobs{
+			width: 100%;
+			ul{
+				margin: 0 -12px;
+			}
+			li{
+				width: calc(100% / 3);
+				padding: 0 12px;
+				margin-bottom: 24px;
+			}
+			.jobintro .text p{
+				text-align: justify;
+			}
+		}
+	}
+	@include maxScreenWidth(767){
+		.banner{
+			.picbox{
+				height: 280px;
+			}
+		}
+		.jobs{
+			width: 100%;
+			ul{
+				margin: 0;
+			}
+			li{
+				width: 100%;
+				padding: 0;
+				margin-bottom: 24px;
+			}
+		}
+	}
+}

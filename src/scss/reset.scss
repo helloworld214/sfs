@@ -1,0 +1,81 @@
+html{
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, ol, ul, dl, dd, h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
+}
+
+ol, ul, td{
+  padding: 0;
+}
+
+ol, ul{
+  list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-size: 100%;
+  font-weight: 100;
+}
+
+a, img, input, button, textarea{
+  outline: none;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+img{
+  border: 0;
+  vertical-align: top;
+}
+
+input, button, textarea{
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid #999;
+  font-size: 100%;
+}
+
+input, textarea{
+  display: block;
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+input{
+  height: 40px;
+  padding: 0 8px;
+}
+
+textarea{
+  height: 150px;
+  padding: 8px;
+  resize: none;
+}
+
+button{
+  cursor: pointer;
+}
+
+hr{
+  margin: 0;
+  border: 0;
+  height: 1px;
+  background-color: #000;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

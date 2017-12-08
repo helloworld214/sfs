@@ -1,0 +1,109 @@
+/*======================================================
+                    campaign
+======================================================*/
+
+.campaign{
+	.main{
+		position: relative;
+		@extend %cam-main;
+	}
+	.main > .container{
+		@extend %cam-container;
+	}
+	.banner{
+		@extend %cam-banner;
+		overflow: hidden;
+	}
+	.show{
+		margin: 10% 0 0;
+	}
+	.grid{
+		@extend %clearfix;
+		.grid-sizer{
+			width: 50%;
+		}
+		.grid-item{
+			float: left;
+			width: 50%;
+			margin-bottom: 15%;
+			&.sink{
+				margin-top: 5%;
+				padding-left: 10%;
+			}
+			&.large{
+				width: 100%;
+				padding-right: 13%;
+			}
+			.picbox{
+				position: relative;
+				img{
+					@include transition(all .5s);
+				}
+			}
+			.textbox{
+				position: absolute;
+				top: 0;
+				right: 0;
+				box-sizing: border-box;
+				height: 100%;
+				margin-right: 6.5%;
+			}
+			.text{
+				text-align: right;
+				h3{
+					display: inline-block;
+					text-align: left;
+					font-family: $didotBold;
+					font-size: 30px;
+					//font-weight: bold;
+				}
+			}
+			.grid-link {
+				@include hover{
+					.picbox img{
+						@include transform(scale(1.15));
+					}
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(1680){
+		.main > .container{
+			width: 80%;
+		}
+		.banner{
+			width: 85%;
+		}
+	}
+	@include maxScreenWidth(991){
+		.main > .container{
+			width: auto;
+			margin: 0 12px;
+		}
+		.banner{
+			width: 100%;
+		}
+		.grid{
+			.grid-item{
+				&.large{
+					padding-right: 15%;
+				}
+				.text{
+					h3{
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
+	@include maxScreenWidth(767){
+		.grid{
+			.grid-item{
+				&.large{
+					padding-right: 20%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,930 @@
+/*======================================================
+                    header
+======================================================*/
+html{
+	//background-color: #666;
+	//overflow: hidden;
+}
+html, body, .allwrap, .allwrap-inner{
+	@extend %full;
+}
+
+.allwrap{
+	overflow: hidden;
+}
+.allwrap-inner{
+	@include transition(all .5s);
+	&:after{
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 0;
+		height: 0;
+		background-color: rgba(0,0,0,.5);
+	}
+}
+
+.main-wrap{
+	@extend %full;
+	box-sizing: border-box;
+	position: relative;
+	overflow-y: auto;
+	-webkit-overflow-scrolling : touch;
+	@include transition(all .5s);
+	@include maxScreenWidth(991){
+		padding-top: 65px;
+	}
+}
+
+.header-pc{
+	position: relative;
+	z-index: 100;
+	border-bottom: 1px solid #eee;
+	background-color: #fff;
+	@include maxScreenWidth(991){
+		display: none;
+	}
+	.inner{
+		position: relative;
+		padding-top: 50px;
+	}
+	.top{
+		position: relative;
+		margin: 0 50px;
+		.fastlink{
+			position: absolute;
+			top: 10px;
+			left: 0;
+			.limiter{
+				margin: 0 8px;
+				line-height: 13px;
+			}
+			.iconfont{
+				margin-right: 5px;
+				font-size: 12px;
+				line-height: 16px;
+			}
+			ul{
+				@extend %clearfix;
+			}
+			li{
+				position: relative;
+				float: left;
+				vertical-align: middle;
+			}
+			a{
+				position: relative;
+				display: block;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 16px;
+				vertical-align: top;
+			}
+			.en, .cn{
+				display: inline-block;
+				height: 16px;
+				line-height: 16px;
+				vertical-align: top;
+			}
+			.cn{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				opacity: 0;
+			}
+			li{
+				@include hover{
+					.en{
+						opacity: 0;
+					}
+					.cn{
+						opacity: 1;
+					}
+				}
+			}
+
+		}
+
+		.logo{
+			text-align: center;
+			vertical-align: top;
+			a{
+				display: inline-block;
+				height: 65px;
+				vertical-align: top;
+				overflow: hidden;
+			}
+			img{
+				display: block;
+				width: auto;
+				height: 100%;
+				margin: 0 auto;
+			}
+		}
+
+		.search{
+			position: absolute;
+			top: 0;
+			right: 0;
+
+			input{
+				width: 200px;
+				height: 24px;
+				padding: 0 30px 0 0;
+				border: 0 solid rgba(0,0,0, .2);
+				border-bottom-width: 1px;
+				color: #333;
+			}
+
+			.iconfont{
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 1;
+				line-height: 24px;
+				color: rgba(0,0,0, .3);
+				cursor: pointer;
+				@include transition(all $duration);
+				@include hover{
+					color: #000;
+				}
+			}
+
+		}
+	}
+	.bottom{
+		position: relative;
+		margin: 0 auto;
+		padding: 32px 0 0;
+		text-align: center;
+		vertical-align: top;
+		.logo, .search{
+			z-index: -1;
+			opacity: 0;
+			//@include transition(all .5s);
+		}
+		.logo{
+			position: absolute;
+			top: 0;
+			left: 10%;
+			margin: 17px 0;
+			img{
+				display: block;
+				width: auto;
+				height: 37px;
+				margin: 0 auto;
+			}
+			@include transition(all $duration);
+			@include maxScreenWidth(1480){
+				left: 5%;
+			}
+			@include maxScreenWidth(1199){
+				display: none;
+			}
+
+		}
+		.search{
+			position: absolute;
+			top: 28px;
+			right: 10%;
+			@include transition(all $duration);
+			.iconfont{
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 1px;
+				z-index: 1;
+				width: 20px;
+				height: 24px;
+				text-align: right;
+				line-height: 24px;
+				color: rgba(0,0,0, .3);
+				cursor: pointer;
+				background-color: #fff;
+				@include transition(all $duration);
+				@include hover{
+					color: #000;
+				}
+			}
+			@include maxScreenWidth(1480){
+				right: 5%;
+			}
+			@include maxScreenWidth(1199){
+				display: none;
+			}
+
+		}
+		.search.focus{
+			@include transform(translateX(50%));
+			input{
+				padding: 0 30px 0 0;
+				width: 200px;
+			}
+		}
+		.menu{
+			display: inline-block;
+			vertical-align: top;
+			ul{
+				@extend %clearfix;
+			}
+			li{
+				//position: relative;
+
+			}
+			.first > li{
+				float: left;
+				padding-right: 50px;
+				padding-bottom: 30px;
+				&:last-child{
+					padding-right: 0;
+				}
+				@include maxScreenWidth(1380){
+					padding-right: 35px;
+				}
+				@include maxScreenWidth(1200){
+					//> a{
+					//	font-size: 14px;
+					//}
+				}
+
+			}
+			a{
+				position: relative;
+				display: block;
+				font-size: 16px;
+				color: #666;
+				line-height: 18px;
+				white-space: nowrap;
+				@include transition(color $duration);
+			}
+			.en, .cn{
+				@include transition(all .15s);
+			}
+			.en{
+				font-family: $didot;
+			}
+			.cn{
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				font-size: 14px;
+				font-family: "Microsoft YaHei";
+			}
+
+
+		}
+		.submenu{
+			position: absolute;
+			top: calc(100%);
+			left: 0;
+			box-sizing: border-box;
+			display: none;
+			width: 100%;
+			padding: 65px 0 65px 20%;
+			border-top: 1px solid #eee;
+			box-shadow: 0 5px 20px rgba(0,0,0,.1);
+			text-align: left;
+			background-color: #fff;
+			vertical-align: top;
+			@include transition(all $duration);
+			.subinner{
+				opacity: 1;
+				@include transition(all .5s);
+				> div{
+					display: inline-block;
+					vertical-align: top;
+				}
+			}
+			.pic{
+				margin-right: 65px;
+			}
+			.second{
+				position: relative;
+				min-height: 180px;
+				li{
+					float: none;
+					padding-bottom: 20px;
+					padding-right: 65px;
+					//position: relative;
+				}
+				a{
+					font-size: 14px;
+				}
+				.en{
+					font-weight: bold;
+				}
+			}
+			.third{
+				position: absolute;
+				top: 0;
+				left: calc(100% - 5px);
+				padding-left: 65px;
+				display: none;
+				min-height: 180px;
+				background-color: #fff;
+				z-index: 1;
+				&:before{
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					display: block;
+					width: 1px;
+					height: 100%;
+					min-height: 180px;
+					background-color: #ccc;
+				}
+				.en{
+					font-weight: normal;
+				}
+			}
+			li{
+				@include hoverOrActive{
+					> a{
+						color: #000;
+						> .en{
+							opacity: 0;
+						}
+						> .cn{
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.second > li{
+				@include hoverOrActive{
+					> .third{
+						z-index: 2;
+						display: block;
+					}
+				}
+				@include hover{
+					> .third{
+						z-index: 100;
+					}
+				}
+			}
+		}
+		.menu .first > li{
+			&.active{
+				> a{
+					color: #000;
+					.en{
+						opacity: 0;
+					}
+					.cn{
+						opacity: 1;
+					}
+				}
+			}
+			@include hover{
+				> a{
+					color: #000;
+					.en{
+						opacity: 0;
+					}
+					.cn{
+						opacity: 1;
+					}
+				}
+				> .submenu{
+					display: block;
+				}
+
+				.subinner{
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+.allwrap.secrolled{
+	.header-pc{
+		position: fixed;
+		top: -116px;
+		left: 0;
+		width: 100%;
+		box-shadow: 0 3px 20px rgba(#000, .15);
+		.bottom{
+			.logo, .search{
+				z-index: 1;
+				opacity: 1;
+			}
+		}
+	}
+	.header-wap .navbar{
+		box-shadow: 0 3px 10px rgba(#000, .15);
+	}
+	.main{
+		padding-top: 80px;
+	}
+}
+
+.allwrap.sidenav-open{
+	.allwrap-inner{
+		&:after{
+			z-index: 100;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.main-wrap{
+		box-shadow: 5px 5px 20px rgba(0, 0, 0, .3);
+		overflow-y: hidden;
+		@include transform(scale(0.9));
+	}
+	.sidenav{
+		box-shadow: 5px 0 20px rgba(0, 0, 0, .2);
+		@include transform(translate3d(0, 0, 0));
+	}
+	.header-wap .navbar{
+		top: 24px;
+		z-index: 1;
+		box-shadow: none;
+		@include transform(scale(0.9));
+	}
+}
+.header-wap{
+	@include minScreenWidth(992){
+		display: none;
+	}
+	.navbar{
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: $maxZindex - 300;
+		width: 100%;
+		height: 65px;
+		background-color: #fff;
+		@include transition(all .5s);
+		.logo{
+			position: absolute;
+			top: 14px;
+			left: 12px;
+			a{
+				display: block;
+				height: 37px;
+				overflow: hidden;
+			}
+			img{
+				display: block;
+				width: auto;
+				height: 37px;
+			}
+		}
+		.buger{
+			position: absolute;
+			top: 12px;
+			right: 12px;
+			width: 24px;
+			height: 2px;
+			padding: 20px 12px;
+			background-color: transparent;
+			cursor: pointer;
+		}
+		.btn-buger{
+			$btnColor: #000;
+			$radius: 2px;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			border-radius: $radius;
+			background-color: $btnColor;
+			@include transition(all $duration);
+			&:before, &:after{
+				content: '';
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: $radius;
+				background-color: $btnColor;
+				@include transition(all $duration);
+			}
+			&:before{
+				top: -8px;
+			}
+			&:after{
+				top: 8px;
+			}
+			&.active{
+				background-color: transparent;
+				&:before{
+					top: 0;
+					@include transform(rotate(45deg));
+				}
+				&:after{
+					top: 0;
+					@include transform(rotate(-45deg));
+				}
+			}
+		}
+	}
+}
+.sidenav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $maxZindex - 200;
+	display: block;
+	box-sizing: border-box;
+	width: 70%;
+	height: 100%;
+	background-color: #fff;
+	line-height: 1.2;
+	overflow-y: auto;
+	@include transform(translate3d(-100%, 0, 0));
+	@include transition(all .5s);
+	@include maxScreenWidth(320){
+		width: 80%;
+	}
+	.logo{
+		a{
+			display: block;
+			height: 37px;
+			padding: 50px 0 50px 30px;
+			overflow: hidden;
+		}
+		img{
+			display: block;
+			width: auto;
+			height: 37px;
+		}
+	}
+
+	a{
+		color: #333;
+	}
+	.flag{
+		display: inline-block;
+		width: 12px;
+		margin: 0 5px 0 0;
+		font-weight: 100;
+		font-style: normal;
+		text-align: center;
+	}
+	.en{
+		font-family: $didot;
+		font-size: 16px;
+	}
+	.cn{
+		font-size: 12px;
+		font-family: "Microsoft YaHei";
+	}
+	.first{
+		box-sizing: border-box;
+		padding-top: 60px;
+		padding-left: 20px;
+		> li{
+			padding: 10px 0;
+			margin: 5px 0;
+		}
+	}
+	.second{
+		display: none;
+		margin-left: 20px;
+		> li{
+			padding: 5px 0;
+			margin: 5px 0;
+		}
+		a{
+			color: #666;
+		}
+		.en{
+			font-size: 16px;
+			@include maxScreenWidth(320){
+				font-size: 14px;
+			}
+		}
+
+	}
+	.third{
+		display: none;
+		margin-left: 20px;
+		padding-top: 10px;
+		> li{
+			padding: 5px 0;
+		}
+		a{
+			color: #999;
+		}
+		.en{
+			font-size: 14px;
+			@include maxScreenWidth(320){
+				font-size: 12px;
+			}
+		}
+	}
+
+	// 全部菜单中文换行
+	li > a > .cn{
+		display: block;
+		padding-left: 22px;
+	}
+
+	// 部分菜单中文换行
+	//li.cn-break > a > .cn{
+	//	display: block;
+	//	padding-left: 22px;
+	//}
+
+	li.active > a .en{
+		color: #000;
+	}
+}
+
+.footer{
+	position: relative;
+	width: 100%;
+	background-color: #f5f5f5;
+
+	.container{
+		width: 1480px;
+		margin: 0 auto;
+		@include transition(all $duration);
+	}
+	.fnc{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 55px 0;
+		border-bottom: 1px solid rgba(0,0,0,.1);
+		@extend %clearfix;
+		h3{
+			margin-bottom: 20px;
+			font-size: 18px;
+			color: #000;
+		}
+	}
+	.follow, .mall, .subscribe{
+		float: left;
+		box-sizing: border-box;
+		width: calc(100% / 3);
+	}
+	.follow{
+		ul{
+			@extend %clearfix;
+		}
+		li{
+			position: relative;
+			float: left;
+			margin-right: 20px;
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+		.wechat{
+			.qrcode{
+				position: absolute;
+				top: -15px;
+				left: 50%;
+				box-shadow: 3px 3px 15px rgba(#000, .15);
+				@include transform(translate(-50%, -100%) scale(0));
+				@include transition(all .35s);
+				@include prefix(transform-origin, center bottom);
+				&:after{
+					content: '';
+					position: absolute;
+					bottom: -8px;
+					left: 50%;
+					width: 0;
+					height: 0;
+					margin-left: -8px;
+					border-top: 8px solid #fff;
+					border-right: 8px solid transparent;
+					border-left: 8px solid transparent;
+				}
+				img{
+					display: block;
+					width: 120px;
+					border-radius: 6px;
+				}
+				.tips{
+					display: none;
+				}
+
+				@include maxScreenWidth(991){
+					position: fixed;
+					top: 0;
+					left: 0;
+					z-index: $maxZindex + 400;
+					display: none;
+					width: 100%;
+					height: 100%;
+					text-align: center;
+					font-size: 12px;
+					color: #999;
+					background-color: #fff;
+					box-shadow: none;
+					@include transform(translate(0, 0) scale(1));
+					@include transition(all 0s);
+					&:after{
+						display: none;
+					}
+					> div{
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 215px;
+						padding-bottom: 20px;
+						//box-shadow: 3px 3px 15px rgba(#000, .15);
+						@include transform(translate(-50%, -50%));
+					}
+					.tips{
+						display: block;
+					}
+					img{
+						position: relative;
+						width: 100%;
+						margin-bottom: 20px;
+					}
+				}
+			}
+			@include hover{
+				.qrcode{
+					@include transform(translate(-50%, -100%) scale(1));
+				}
+			}
+		}
+		a{
+			display: block;
+			width: 41px;
+			height: 41px;
+			border: 1px solid #d1d1d1;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 41px;
+			@include transition(all $duration);
+		}
+		.iconfont{
+			font-size: 20px;
+			color: rgba(0,0,0,.6);
+			@include transition(all $duration);
+		}
+		a{
+			@include hover{
+				$color: #000;
+				border-color: $color;
+				.iconfont{
+					color: $color;
+				}
+			}
+		}
+	}
+	.mall{
+		li{
+			margin-bottom: 15px;
+			&:last-child{
+				margin-bottom: 0;
+			}
+		}
+		a{
+			font-size: 12px;
+			color: rgba(#000, .6);
+			@include transition(all $duration);
+			@include hover{
+				color: #000;
+			}
+		}
+	}
+	.subscribe{
+		p{
+			margin-bottom: 20px;
+			font-size: 12px;
+			color: rgba(#000, .6);
+			@include transition(all $duration);
+			@include hover{
+				color: #000;
+			}
+		}
+		.box{
+			position: relative;
+			width: 230px;
+			height: 32px;
+			input{
+				position: absolute;
+				top: 0;
+				left: 0;
+				box-sizing: border-box;
+				width: 173px;
+				height: 100%;
+				border: 1px solid #e3e3e3;
+				@include transition(all $duration);
+				&:focus{
+					border-color: #b0b0b0;
+				}
+			}
+			span{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 58px;
+				height: 32px;
+				text-align: center;
+				line-height: 32px;
+				font-size: 12px;
+				color: #fff;
+				background-color: #b0b0b0;
+				cursor: pointer;
+				@extend %unselect;
+				@include transition(all $duration);
+				&.active{
+					background-color: #000;
+				}
+			}
+		}
+	}
+	.copyright{
+		padding: 30px 0;
+		font-size: 12px;
+		color: #999;
+		.brand{
+			color: #000;
+		}
+		a{
+			color: #999;
+			@include hover{
+				color: #0bbbc0;
+
+			}
+		}
+	}
+
+	@include maxScreenWidth(1600){
+		.container{
+			width: 80%;
+		}
+	}
+	@include maxScreenWidth(991){
+		.container{
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	@include maxScreenWidth(767){
+		.fnc{
+			padding: 35px 20px;
+		}
+		.follow, .mall, .subscribe{
+			h3{
+				margin-bottom: 15px;
+			}
+		}
+		.follow, .mall{
+			width: 50%;
+			margin-bottom: 30px;
+		}
+		.follow{
+			li{
+				margin-right: 15px;
+			}
+			a{
+				width: 31px;
+				height: 31px;
+				line-height: 31px;
+			}
+			.iconfont{
+				font-size: 16px;
+			}
+		}
+		.subscribe{
+			float: none;
+			width: 100%;
+			.box{
+				position: relative;
+				width: 100%;
+				height: 50px;
+				input{
+					width: calc(100% - 79px);
+				}
+				span{
+					width: 80px;
+					height: 100%;
+					text-align: center;
+					line-height: 50px;
+				}
+			}
+		}
+	}
+}
+
+@include maxScreenWidth(1340){
+	.header-pc .bottom .menu .first > li:nth-child(2) > .submenu{
+		padding-left: 15%;
+	}
+}
+
+@include maxScreenWidth(1160){
+	.header-pc .bottom .menu .first > li:nth-child(2) > .submenu{
+		padding-left: 10%;
+	}
+}
+
+@include maxScreenWidth(1024){
+	.header-pc .bottom .menu .first > li:nth-child(2) > .submenu{
+		padding-left: 8%;
+	}
+}

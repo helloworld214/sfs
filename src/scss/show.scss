@@ -1,0 +1,388 @@
+/*======================================================
+                    show
+======================================================*/
+
+.show{
+	.main > .container{
+		width: 80%;
+		margin: 0 auto;
+		@include maxScreenWidth(991){
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	.banner{
+		position: relative;
+		margin: 80px 0 0;
+		.picbox{
+			@extend %picbox;
+			position: relative;
+			width: 75%;
+			cursor: pointer;
+			@include transition(all $duration);
+			.mask{
+				@extend %mask;
+				z-index: 2;
+				opacity: 0;
+				background-color: rgba(#000, .4);
+				@include transition(opacity .8s);
+			}
+			.icon-play{
+				z-index: 10;
+			}
+			video{
+				@extend %patl0;
+				@extend %full;
+				z-index: 5;
+				opacity: 0;
+				@include transition(opacity 1s);
+			}
+			&.has-video{
+				video{
+					opacity: 1;
+				}
+			}
+			&.playing{
+				.iconfont{
+					opacity: 0;
+				}
+			}
+			&.ended{
+				video{
+					opacity: 0;
+				}
+			}
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 25%;
+			height: 100%;
+			background-color: #fafafa;
+		}
+		.text{
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 15%;
+			text-align: left;
+		}
+		.time{
+			font-size: 16px;
+		}
+		h3{
+			display: inline-block;
+			position: relative;
+			padding-bottom: 20px;
+			font-family: $didot;
+			font-style: italic;
+			font-size: 36px;
+			@include transition(all .35s);
+			&:after{
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 170%;
+				height: 1px;
+				background-color: #000;
+				@include transition(all .35s);
+			}
+		}
+		h4{
+			padding-top: 20px;
+			font-size: 20px;
+			color: #b6b6b6;
+			@include transition(all .35s);
+		}
+
+		@include hover{
+			.picbox{
+				.mask{
+					opacity: 1;
+				}
+			}
+			h3:after{
+				width: 120%;
+			}
+			h4{
+				color: #000;
+			}
+		}
+	}
+	.vdoshow{
+		padding: 120px 0 160px;
+		background: url("../images/show_bg.png") 0 0 repeat-y;
+		.vdo-item{
+			position: relative;
+			margin-bottom: 116px;
+			cursor: pointer;
+			&:last-child{
+				margin-bottom: 0;
+			}
+
+		}
+		.picbox{
+			@extend %picbox;
+			position: relative;
+			width: 50%;
+			.mask{
+				@extend %mask;
+				opacity: 0;
+				background-color: rgba(#000, .4);
+				@include transition(opacity .8s);
+			}
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			width: 50%;
+			height: 100%;
+		}
+		.text{
+			display: inline-block;
+			text-align: left;
+			.time{
+				font-family: $didot;
+				font-size: 18px;
+				color: #888;
+			}
+			h3{
+				font-family: $didot;
+				font-size: 32px;
+				color: #333;
+			}
+			h4{
+				position: relative;
+				margin: 20px 0 40px;
+				padding-left: 30px;
+				font-size: 14px;
+				color: #666;
+				&:before{
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 0;
+					width: 20px;
+					height: 1px;
+					background-color: #000;
+					@include transition(width .35s);
+				}
+				@include transition(all .35s);
+			}
+			p{
+				max-width: 420px;
+				max-height: 48px;
+				overflow: hidden;
+				font-size: 14px;
+				color: #999;
+				line-height: 24px;
+				@include transition(all .35s);
+			}
+		}
+		.vdo-item{
+			@include hover{
+				.picbox .mask{
+					opacity: 1;
+				}
+				.text{
+					h3{
+						color: #000;
+					}
+					h4{
+						padding-left: 40px;
+						color: #333;
+						&:before{
+							width: 30px;
+						}
+					}
+					p{
+						color: #666;
+					}
+				}
+			}
+		}
+		.vdo-item:nth-child(odd){
+			.picbox{
+				margin-left: 50%;
+			}
+			.textbox{
+				left: 0;
+			}
+		}
+		.vdo-item:nth-child(even){
+			.picbox{
+				margin-left: 0;
+			}
+			.textbox{
+				right: 0;
+			}
+		}
+	}
+
+	@include maxScreenWidth(1680){
+		.banner{
+			h3{
+				font-size: 32px;
+			}
+		}
+	}
+
+	@include maxScreenWidth(1580){
+		.banner{
+			.picbox{
+				width: 70%;
+			}
+			.textbox{
+				width: 30%;
+			}
+		}
+	}
+
+	@include maxScreenWidth(1300){
+		.banner{
+			h3{
+				font-size: 30px;
+			}
+			h4{
+				font-size: 18px;
+			}
+		}
+		.vdoshow{
+			.text{
+				p{
+					max-width: 360px;
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(1200){
+		.banner{
+			.time{
+				font-size: 14px;
+			}
+			h3{
+				padding-bottom: 10px;
+				font-size: 24px;
+			}
+			h4{
+				padding-top: 10px;
+				font-size: 14px;
+			}
+		}
+		.vdoshow{
+			.text{
+				p{
+					max-width: 320px;
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(991){
+		.vdoshow{
+			.text{
+				display: block;
+				box-sizing: border-box;
+				h3{
+					font-size: 28px;
+				}
+				h4{
+					margin: 20px 0;
+				}
+				p{
+					max-width: 100%;
+				}
+			}
+			.vdo-item:nth-child(odd){
+				.text{
+					padding-right: 15px;
+				}
+			}
+			.vdo-item:nth-child(even){
+				.text{
+					padding-left: 15px;
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(767){
+		.banner{
+			margin: 50px 0;
+			border-radius: 4px;
+			box-shadow: 3px 3px 15px rgba(#000, .15);
+			overflow: hidden;
+			.picbox{
+				width: 100%;
+			}
+			.textbox{
+				position: static;
+				box-sizing: border-box;
+				width: 100%;
+				padding: 30px 15px;
+			}
+			.text{
+				display: block;
+				padding: 0;
+			}
+			.time{
+				color: #888;
+			}
+			h3:after{
+				display: none;
+			}
+			h4{
+				padding-top: 0;
+				color: #999;
+			}
+		}
+		.vdoshow{
+			padding: 0 0 100px;
+			.picbox{
+				width: 100%;
+			}
+			.textbox{
+				position: static;
+				box-sizing: border-box;
+				width: 100%;
+				padding: 30px 15px;
+			}
+			.text{
+				h3{
+					font-size: 28px;
+				}
+				h4{
+					margin: 20px 0;
+				}
+				p{
+					max-width: 100%;
+				}
+			}
+			.vdo-item{
+				margin: 50px 0;
+				border-radius: 4px;
+				box-shadow: 3px 3px 15px rgba(#000, .15);
+				overflow: hidden;
+			}
+			.vdo-item:nth-child(odd){
+				.picbox{
+					margin: 0;
+				}
+				.text{
+					padding-right: 0;
+				}
+			}
+			.vdo-item:nth-child(even){
+				.picbox{
+					margin: 0;
+				}
+				.text{
+					padding-left: 0;
+				}
+			}
+		}
+	}
+
+}

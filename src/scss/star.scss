@@ -1,0 +1,213 @@
+/*======================================================
+                    star
+======================================================*/
+
+.star{
+	.main > .container{
+		width: 80%;
+		margin: 0 auto;
+		@include maxScreenWidth(991){
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	.banner{
+		position: relative;
+		margin: 80px 0 0;
+		.picbox{
+			@extend %picbox;
+			position: relative;
+			width: 75%;
+			cursor: pointer;
+			@include transition(all $duration);
+			.mask{
+				@extend %mask;
+				z-index: 2;
+				opacity: 0;
+				background-color: rgba(#000, .4);
+				@include transition(opacity .8s);
+			}
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 25%;
+			height: 100%;
+			background-color: #fafafa;
+		}
+		.text{
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 15%;
+			text-align: left;
+		}
+		.time{
+			font-size: 16px;
+		}
+		h3{
+			display: inline-block;
+			position: relative;
+			padding-bottom: 20px;
+			font-family: $didot;
+			font-style: italic;
+			font-size: 36px;
+			@include transition(all .35s);
+			&:after{
+				content: '';
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 170%;
+				height: 1px;
+				background-color: #000;
+				@include transition(all .35s);
+			}
+		}
+		h4{
+			padding-top: 20px;
+			font-size: 20px;
+			color: #b6b6b6;
+			@include transition(all .35s);
+		}
+
+		@include hover{
+			.picbox{
+				.mask{
+					opacity: 1;
+				}
+			}
+			h3:after{
+				width: 120%;
+			}
+			h4{
+				color: #000;
+			}
+		}
+	}
+	.starshow{
+		overflow: hidden;
+	}
+	.grid{
+		margin: 36px -17px;
+		.grid-sizer, .grid-item{
+			width: calc(100% / 3);
+		}
+		.grid-item{
+			float: left;
+			margin-bottom: 34px;
+			padding: 0 17px;
+			&.large{
+				width: calc(100% / 3 * 2);
+			}
+		}
+		.picbox{
+			position: relative;
+			@include grayscale(100);
+			@include transition(all .5s);
+			img{
+				@include transition(all .5s);
+			}
+			.mask{
+				@extend %mask;
+				background-color: rgba(#000, .3);
+				opacity: 0;
+			}
+		}
+		.grid-link {
+			@include hover{
+				.picbox{
+					@include grayscale(0);
+				}
+				.picbox:after{
+					border-width: 20px;
+				}
+				.picbox img{
+					@include transform(scale(1.15));
+				}
+			}
+		}
+	}
+
+	@include maxScreenWidth(1200){
+		.banner{
+			.picbox{
+				width: 70%;
+			}
+			.textbox{
+				width: 30%;
+			}
+		}
+	}
+
+	@include maxScreenWidth(991){
+		.grid{
+			.picbox{
+				@include grayscale(0);
+			}
+		}
+	}
+
+	@include maxScreenWidth(767){
+		.banner{
+			margin: 50px 0;
+			border-radius: 4px;
+			box-shadow: 3px 3px 15px rgba(#000, .15);
+			overflow: hidden;
+			.picbox{
+				position: static;
+				width: 100%;
+			}
+			.textbox{
+				position: static;
+				box-sizing: border-box;
+				width: 100%;
+				padding: 30px 15px;
+			}
+			.text{
+				display: block;
+				padding: 0;
+			}
+			.time{
+				color: #888;
+			}
+			h3{
+				padding-bottom: 10px;
+				font-size: 30px;
+				&:after{
+					display: none;
+				}
+				br{
+					display: none;
+				}
+			}
+			h4{
+				padding-top: 0;
+				font-size: 16px;
+				color: #999;
+			}
+		}
+		.starshow{
+			overflow: visible;
+		}
+		.grid{
+			margin: 50px 0;
+			.grid-item{
+				float: none;
+				width: 100%;
+				margin-bottom: 30px;
+				padding: 0;
+				&.large{
+					width: 100%;
+				}
+				.picbox{
+					overflow: visible;
+					img{
+						border-radius: 4px;
+						box-shadow: 3px 3px 15px rgba(#000, .15);
+					}
+				}
+			}
+		}
+	}
+}

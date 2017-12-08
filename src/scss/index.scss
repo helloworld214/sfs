@@ -1,0 +1,520 @@
+/*======================================================
+                    index
+======================================================*/
+.index{
+	.btn-more{
+		box-sizing: border-box;
+		display: inline-block;
+		width: 140px;
+		height: 40px;
+		margin-top: 30px;
+		border: 1px solid #000;
+		text-align: center;
+		line-height: 38px;
+		color: #000;
+		background-color: #fff;
+		@include transition(background $duration);
+		@include hover{
+			border-color: #000;
+			color: #fff;
+			background-color: #000;
+		}
+		@include maxScreenWidth(991){
+			width: 100px;
+			height: 30px;
+			line-height: 28px;
+		}
+	}
+	.picbox{
+		box-sizing: border-box;
+		width: 100%;
+		overflow: hidden;
+		img{
+			display: block;
+			width: 100%;
+		}
+	}
+	.banner{
+		.textbox{
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+			@extend %full;
+		}
+		.the{
+			display: inline-block;
+			margin-bottom: 25px;
+		}
+		h2{
+			font-family: $didotBold;
+			font-style: italic;
+			font-size: 40px;
+			//font-weight: bold;
+			color: #fff;
+		}
+		h3{
+			font-size: 22px;
+			color: #fff;
+		}
+		.btn-more{
+			border-color: #fff;
+		}
+
+		@include maxScreenWidth(767){
+			.the{
+				display: inline-block;
+				width: 66px;
+				margin-bottom: 10px;
+			}
+			h2{
+				font-size: 22px;
+			}
+			h3{
+				font-size: 14px;
+			}
+		}
+	}
+	.video{
+		position: relative;
+		box-sizing: border-box;
+		padding: 7.5% 0;
+		background-color: #f8f8f8;
+		.container{
+			position: relative;
+			width: 1480px;
+			margin: 0 auto;
+			@include transition(all $duration);
+		}
+		.textbox{
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 25%;
+			height: 100%;
+			box-sizing: border-box;
+			background-color: #fff;
+			.text{
+				box-sizing: border-box;
+				width: 100%;
+				padding-right: 25%;
+				text-align: right;
+			}
+			.brand{
+				margin-bottom: 15px;
+				font-family: $didotBold;
+				font-style: italic;
+				font-size: 14px;
+				//font-weight: bold;
+				color: rgba(#000, .8);
+			}
+			.en{
+				position: relative;
+				z-index: 15;
+				padding-bottom: 20px;
+				font-family: $didotBold;
+				font-style: italic;
+				font-size: 40px;
+				//font-weight: bold;
+				color: #000;
+				line-height: 1.2;
+				@include transition(all $duration);
+				&:after {
+					content: '';
+					position: absolute;
+					right: 0;
+					bottom: 0;
+					width: 140%;
+					height: 1px;
+					background-color: #7e7e7e;
+				}
+			}
+			.cn{
+				margin-top: 20px;
+				font-size: 22px;
+				color: #b6b6b6;
+				@include transition(all $duration);
+			}
+			.btn-more{
+				margin-top: 70px;
+				border: 1px solid #000;
+			}
+		}
+		.videobox{
+			position: relative;
+			width: 75%;
+			cursor: pointer;
+			overflow: hidden;
+			img{
+				position: relative;
+				z-index: 5;
+				display: block;
+				width: 100%;
+				@include transition(all 1s);
+			}
+			.mask{
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 7;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(#000, .3);
+				@include transition(all 1s);
+			}
+			.iconfont{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 10;
+				display: inline-block;
+				margin: -48px 0 0 -32px;
+				font-size: 64px;
+				color: #fff;
+				@include transition(all 1s);
+			}
+			video{
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			&.playing{
+				img, .iconfont, .mask{
+					opacity: 0;
+				}
+			}
+		}
+
+		@include maxScreenWidth(1600){
+			.container{
+				width: 80%;
+			}
+		}
+
+		@include maxScreenWidth(1360){
+			.textbox{
+				.en{
+					font-size: 34px;
+				}
+				.cn{
+					font-size: 18px;
+				}
+			}
+		}
+
+		@include maxScreenWidth(991){
+			.container{
+				width: auto;
+				margin: 0 12px;
+			}
+			.textbox{
+				width: 30%;
+				.en{
+					font-size: 28px;
+					padding-bottom: 10px;
+					&:after{
+						display: none;
+					}
+				}
+				.cn{
+					margin-top: 10px;
+					font-size: 16px;
+				}
+				.btn-more{
+					margin-top: 30px;
+				}
+			}
+			.videobox{
+				width: 70%;
+			}
+		}
+
+		@include maxScreenWidth(767){
+			.textbox{
+				position: static;
+				width: 100%;
+				.text{
+					padding: 30px 15px;
+					text-align: left;
+				}
+				.en{
+					font-size: 24px;
+					padding-bottom: 0;
+				}
+				.cn{
+					font-size: 14px;
+				}
+				.btn-more{
+					margin-top: 20px;
+				}
+			}
+			.videobox{
+				width: 100%;
+			}
+		}
+
+	}
+	.haute{
+		.picbox{
+			@extend %picbox;
+		}
+		.textbox{
+			@extend %patl0;
+			@extend %full;
+			z-index: 5;
+			.text {
+				box-sizing: border-box;
+				width: 430px;
+				margin: 0 auto;
+				padding: 90px 50px;
+				background-color: rgba(#fff, .85);
+				@include transition(all $duration);
+			}
+			.brand{
+				margin-bottom: 15px;
+				font-family: $didotBold;
+				font-style: italic;
+				font-size: 14px;
+				//font-weight: bold;
+				color: rgba(#000, .8);
+			}
+			.en{
+				position: relative;
+				font-family: $didotBold;
+				font-style: italic;
+				font-size: 40px;
+				//font-weight: bold;
+				color: #000;
+				line-height: 1.2;
+				@include transition(all $duration);
+			}
+			.cn{
+				margin-top: 10px;
+				font-size: 22px;
+				color: rgba(#000, .9);
+				@include transition(all $duration);
+			}
+			.line{
+				width: 42px;
+				height: 1px;
+				margin: 25px auto;
+				background-color: rgba(#000, .5);
+				@include transition(all $duration);
+			}
+			p{
+				max-width: 100%;
+				height: 64px;
+				font-size: 14px;
+				color: rgba(#000, .7);
+				overflow: hidden;
+				@include transition(all $duration);
+			}
+			.btn-more{
+				margin-top: 60px;
+				border: 1px solid #000;
+				color: #fff;
+				background-color: #000;
+				@include hover{
+					color: #000;
+					background-color: #fff;
+				}
+			}
+
+		}
+
+		@include maxScreenWidth(1360){
+			.textbox{
+				.text{
+					width: 380px;
+					padding: 50px 30px;
+				}
+				p br{
+					display: none;
+				}
+			}
+		}
+
+		@include maxScreenWidth(1024){
+			.textbox{
+				.text{
+					width: 320px;
+					padding: 50px 30px;
+				}
+				.en{
+					font-size: 32px;
+				}
+				.cn{
+					font-size: 18px;
+				}
+				.btn-more{
+					margin-top: 30px;
+				}
+			}
+		}
+
+		@include maxScreenWidth(991){
+			.textbox{
+				.text{
+					width: 260px;
+					padding: 30px 15px;
+				}
+				.en{
+					font-size: 26px;
+				}
+				.cn{
+					font-size: 16px;
+				}
+				.btn-more{
+					margin-top: 20px;
+				}
+				.line{
+					margin: 15px auto;
+				}
+				p{
+					font-size: 12px;
+				}
+			}
+		}
+
+		@include maxScreenWidth(767){
+			.textbox{
+				position: static;
+				.text{
+					box-sizing: border-box;
+					width: 100%;
+					padding: 30px 15px;
+				}
+				.en{
+					font-size: 24px;
+				}
+				.cn{
+					font-size: 14px;
+				}
+				.btn-more{
+					margin-top: 20px;
+				}
+				.line{
+					margin: 25px auto;
+				}
+				p{
+					font-size: 12px;
+				}
+			}
+		}
+	}
+	.list{
+		position: relative;
+		padding: 100px 0;
+		background-color: #fff;
+		.container{
+			width: 1480px;
+			margin: 0 auto;
+			@include transition(all $duration);
+		}
+		ul{
+			@extend %clearfix;
+			margin: 0 -25px;
+		}
+		li{
+			position: relative;
+			float: left;
+			box-sizing: border-box;
+			width: calc(100% / 3);
+			padding: 0 25px;
+		}
+		a{
+			display: block;
+			box-sizing: border-box;
+		}
+		.channel{
+			vertical-align: top;
+			img{
+				display: inline-block;
+				height: 37px;
+				vertical-align: top;
+			}
+			span{
+				display: inline-block;
+				margin-left: 5px;
+				font-family: $didotBold;
+				font-style: italic;
+				font-size: 26px;
+				//font-weight: bold;
+			}
+		}
+		.picbox{
+			@extend %picbox;
+			margin-top: 20px;
+			overflow: hidden;
+			img{
+				@include transition(all .5s);
+			}
+		}
+		h3{
+			box-sizing: border-box;
+			width: 100%;
+			padding: 20px 0;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			font-size: 16px;
+			color: #666;
+			@include transition(all .3s);
+		}
+		a{
+			@include hover{
+				.picbox img{
+					@include transform(scale(1.15));
+				}
+				h3{
+					color: #000;
+				}
+			}
+		}
+
+		@include maxScreenWidth(1600){
+			.container{
+				width: 80%;
+			}
+		}
+		@include maxScreenWidth(991){
+			padding: 70px 0;
+			.container{
+				width: auto;
+				margin: 0 12px;
+			}
+			ul{
+				margin: 0;
+			}
+			li{
+				width: 50%;
+				margin-bottom: 30px;
+				padding: 0;
+				&:nth-child(odd){
+					 padding-right: 15px;
+				}
+				&:nth-child(even){
+					padding-left: 15px;
+				}
+			}
+		}
+		@include maxScreenWidth(767){
+			padding: 70px 0 50px;
+			li{
+				width: 100%;
+				margin-bottom: 30px;
+				padding: 0;
+				&:nth-child(odd){
+					padding-right: 0;
+				}
+				&:nth-child(even){
+					padding-left: 0;
+				}
+			}
+			h3{
+				color: #000;
+			}
+		}
+	}
+}

@@ -1,0 +1,332 @@
+/*======================================================
+                    video
+======================================================*/
+
+.video{
+	.picbox{
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+		img{
+			position: relative;
+			z-index: 1;
+		}
+		.iconfont{
+			z-index: 10;
+		}
+		.mask{
+			@extend %patl0;
+			@extend %full;
+			z-index: 2;
+			opacity: 0;
+			background-color: rgba(#000, .3);
+			@include transition(opacity .8s);
+		}
+		video{
+			@extend %patl0;
+			@extend %full;
+			z-index: 5;
+			opacity: 0;
+			@include transition(opacity 1s);
+		}
+		&.has-video{
+			video{
+				opacity: 1;
+			}
+		}
+		&.playing{
+			.iconfont{
+				opacity: 0;
+			}
+		}
+		&.ended{
+			video{
+				opacity: 0;
+			}
+		}
+		@include hover{
+			.mask{
+				opacity: 1;
+			}
+		}
+	}
+	.main > .container{
+		@extend %cam-container;
+	}
+	.banner{
+		@extend %cam-banner;
+		h3{
+			font-size: 14px;
+			color: #666;
+		}
+	}
+	.vdoshow{
+		.hd{
+			position: relative;
+			.title{
+				position: relative;
+				box-sizing: border-box;
+				width: auto;
+				margin-right: 200px;
+				padding: 10px 0;
+				border-bottom: 1px solid rgba(#000, .3);
+				.en{
+					font-family: $didotBold;
+					//font-weight: bold;
+					font-style: italic;
+					font-size: 32px;
+					color: #000;
+				}
+				.cn{
+					font-size: 14px;
+					color: #666;
+				}
+			}
+			.selector{
+				@extend %unselect;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 50;
+				width: 140px;
+				height: 38px;
+				border: 1px solid #000;
+				font-size: 14px;
+				color: #888;
+				line-height: 38px;
+				cursor: pointer;
+				overflow: hidden;
+
+				.res{
+					position: relative;
+					box-sizing: border-box;
+					width: 100%;
+					height: 100%;
+					padding: 0 34px 0 14px;
+				}
+				.val{
+					color: #000;
+				}
+				.arrow{
+					position: absolute;
+					top: 50%;
+					z-index: 10;
+					right: 14px;
+					width: 0;
+					height: 0;
+					margin-top: -3px;
+					border-top: 6px solid #000;
+					border-right: 6px solid transparent;
+					border-left: 6px solid transparent;
+					@include transform(rotate(0));
+					@include transition(all $duration);
+				}
+				.list{
+					position: absolute;
+					top: 65px;
+					left: -1px;
+					z-index: 50;
+					min-width: 100%;
+					min-height: 30px;
+					max-height: 200px;
+					border: 1px solid #000;
+					line-height: 30px;
+					overflow-y: auto;
+					opacity: 1;
+					background-color: #fff;
+					@include transition(top .35s, opacity 1s);
+					li{
+						box-sizing: border-box;
+						width: 100%;
+						padding: 0 14px;
+						&.selected{
+							color: #000;
+							background-color: #eee;
+						}
+						@include hover{
+							color: #000;
+							background-color: #eee;
+						}
+					}
+				}
+				&.active{
+					overflow: visible;
+					.arrow{
+						@include transform(rotate(180deg));
+					}
+					.list{
+						top: 45px;
+						opacity: 1;
+					}
+				}
+			}
+		}
+		.bd{
+			> .container{
+				width: 1280px;
+				min-height: 200px;
+				margin: 0 auto;
+			}
+			.vdolist{
+				li{
+					position: relative;
+					box-sizing: border-box;
+					width: 100%;
+					margin: 100px 0;
+					.picbox{
+						@extend %picbox;
+						width: 65%;
+						img{
+							@include transition(all .5s);
+						}
+					}
+					.textbox{
+						position: absolute;
+						top: 0;
+						width: 35%;
+						height: 100%;
+						background-color: #fff;
+					}
+					.mask{
+						background-color: rgba(#000, .5);
+					}
+					.text{
+						width: 100%;
+						box-sizing: border-box;
+					}
+					.year{
+						font-family: $didot;
+						font-size: 18px;
+						color: #aaa;
+					}
+					.en{
+						font-family: $didot;
+						font-weight: bold;
+						font-size: 24px;
+						color: #000;
+					}
+					.line{
+						display: inline-block;
+						width: 50px;
+						height: 1px;
+						margin: 30px 0;
+						background-color: rgba(#000, .2);
+						@include transition(all .5s);
+					}
+					.cn{
+						font-size: 14px;
+						color: #999;
+					}
+					&:nth-child(odd){
+						.picbox{
+							margin-right: 35%;
+						}
+						.textbox{
+							right: 0;
+						}
+						.text{
+							padding-left: 20%;
+							text-align: left;
+						}
+					}
+					&:nth-child(even){
+						.picbox{
+							margin-left: 35%;
+						}
+						.textbox{
+							left: 0;
+						}
+						.text{
+							padding-right: 20%;
+							text-align: right;
+						}
+					}
+					@include hover{
+						.mask{
+							opacity: 1;
+						}
+						.picbox img{
+							@include transform(scale(1.12));
+						}
+						.line{
+							width: 100px;
+							background-color: rgba(#000, 1);
+						}
+						.cn{
+							color: #000;
+						}
+					}
+				}
+			}
+		}
+		@include maxScreenWidth(1680){
+			.bd{
+				> .container{
+					width: 85%;
+					margin: 0 auto;
+				}
+			}
+		}
+		@include maxScreenWidth(1280){
+			.bd{
+				.vdolist li .en{
+					font-size: 20px;
+				}
+			}
+		}
+		@include maxScreenWidth(767){
+			.hd{
+				.title{
+					display: inline-block;
+					margin: 0;
+					.en{
+						font-size: 20px;
+					}
+				}
+				.selector{
+					position: absolute;
+					top: auto;
+					right: 0;
+					bottom: 0;
+					width: 100px;
+					margin-top: 20px;
+				}
+			}
+			.bd{
+				> .container{
+					width: 100%;
+				}
+				.vdolist li{
+					margin: 50px 0;
+					.picbox{
+						width: 100%;
+					}
+					.textbox{
+						position: static;
+						box-sizing: border-box;
+						width: 100%;
+						height: auto;
+						padding: 30px 15px;
+					}
+					.line{
+						margin: 15px 0;
+						background-color: #000;
+					}
+					.cn{
+						color: #333;
+					}
+					&:nth-child(odd),
+					&:nth-child(even){
+						.picbox{
+							margin: 0;
+						}
+						.text{
+							padding: 0;
+							text-align: left;
+						}
+					}
+				}
+			}
+		}
+	}
+}

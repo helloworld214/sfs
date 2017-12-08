@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "DidotBold";
+  src: url("DidotBold.woff2") format("woff2"),
+       url("DidotBold.woff") format("woff"),
+       url("DidotBold.ttf") format("truetype"),
+       url("DidotBold.eot") format("embedded-opentype"),
+       url("DidotBold.svg") format("svg"),
+       url("DidotBold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

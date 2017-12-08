@@ -1,0 +1,113 @@
+/*======================================================
+                    series
+======================================================*/
+.series{
+	@extend .com-custom;
+
+	.clothshow .container{
+		position: relative;
+		width: 80%;
+		margin: 0 auto;
+		@include maxScreenWidth(991){
+			width: auto;
+			margin: 0 12px;
+		}
+	}
+	.grid{
+		.picbox{
+			position: relative;
+			img{
+				@include transition(all .35s);
+			}
+			@include hover{
+				img{
+					@include transform(scale(1.15));
+				}
+			}
+		}
+		.grid-sizer,
+		.grid-item{
+			width: 50%;
+		}
+		.grid-item{
+			position: relative;
+			float: left;
+			margin-bottom: 110px;
+			&.left{
+				padding-right: 40px;
+			}
+			&.right{
+				padding-left: 110px;
+				.picbox{
+					margin-top: 35%;
+				}
+			}
+			&.large{
+				width: 100%;
+				.picbox{
+					width: 86%;
+					margin: 0 auto;
+				}
+			}
+		}
+
+		@include maxScreenWidth(1280){
+			.grid-item{
+				position: relative;
+				float: left;
+				margin-bottom: 80px;
+				&.left{
+					padding-right: 20px;
+				}
+				&.right{
+					padding-left: 60px;
+					.picbox{
+						margin-top: 30%;
+					}
+				}
+				&.large{
+					width: 100%;
+					.picbox{
+						width: 86%;
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+
+		@include maxScreenWidth(767){
+			.grid-sizer{
+				width: 100%;
+			}
+			.grid-item{
+				position: relative;
+				float: none;
+				width: 100%;
+				margin-bottom: 30px;
+				&.left{
+					padding-right: 0;
+				}
+				&.right{
+					padding-left: 0;
+					.picbox{
+						margin-top: 0;
+					}
+				}
+				&.large{
+					width: 100%;
+					.picbox{
+						width: 100%;
+						margin: 0;
+					}
+				}
+				.picbox{
+					overflow: visible;
+				}
+				.picbox img{
+					border-radius: 4px;
+					box-shadow: 3px 3px 15px rgba(#000, .15);
+				}
+			}
+		}
+	}
+}

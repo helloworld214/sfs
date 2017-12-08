@@ -1,0 +1,29 @@
+想要这样的结构
+
+源码目录：
+
+scr
+  |-oldbrowse    // 提示浏览器升级
+  |-fonts        // 字体
+  |-images       // 图片
+  |-video        // 视频
+  |-pages        // 页面
+  |-scss         // 样式
+  |-js           // 脚本
+  |-plugs        // 插件
+
+
+
+最终发布后的目录结构
+
+public
+  |-oldbrowse    // 提示浏览器升级
+  |-fonts        // 字体
+  |-images       // 图片
+  |-video        // 视频
+  |-css          // 样式
+  |-js           // 脚本
+  |-plugs        // 插件
+  |-page1.html   // 页面文件
+  |-page2.html   // 页面文件
+  |-page3.html   // 页面文件
